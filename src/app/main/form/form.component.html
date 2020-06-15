@@ -1,0 +1,61 @@
+<form [formGroup]="userProfileForm " class="container">
+    <div class="form-group">
+        <label for="formGroupExampleInput">სახელი</label>
+        <input formControlName="firstName" type="text" class="form-control" id="formGroupExampleInput"
+            placeholder="ჩაწერეთ სახელი">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">გვარი</label>
+        <input formControlName="lastName" type="text" class="form-control" id="formGroupExampleInput2"
+            placeholder="ჩაწერეთ გვარი">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">პირადი ნომერი</label>
+        <input formControlName="persNumber" type="text" class="form-control" id="formGroupExampleInput2"
+            placeholder="ჩაწერეთ პირადი ნომერი">
+    </div>
+    <div class="form-group">
+        <label for="">დაბადების თარიღი</label>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputState">დღე</label>
+                <select formControlName="dge" id="inputState" class="form-control">
+                    <option *ngFor="let day of days">{{day}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">თვე</label>
+                <select formControlName="tve" id="inputState" class="form-control">
+                    <option *ngFor="let month of months">{{month}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">წელი</label>
+                <select formControlName="weli" id="inputState" class="form-control">
+                    <option *ngFor="let year of years">{{year}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <button (click)="add()" type="submit" class="btn btn-primary">დამატება</button>
+</form>
+<table class="table table-bordered container mt-5">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">სახელი</th>
+            <th scope="col">გვარი</th>
+            <th scope="col">პირადი ნომერი</th>
+            <th scope="col">დაბადების თარიღი</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let person of user" >
+        <tr>
+            <th scope="row"></th>
+            <td>{{person.firstName}}</td>
+            <td>{{person.lastName}}</td>
+            <td>{{person.persNumber}}</td>
+            <td>{{person.dge}} {{person.tve}}, {{person.weli}} წელი</td>
+        </tr>
+    </tbody>
+</table>
